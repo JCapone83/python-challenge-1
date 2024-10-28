@@ -62,3 +62,10 @@ def add_to_order(menu, category, item, sub_item=None, quantity=1):
         price = menu[category][item]
         order_list.append({'item_name': item, 'item_price': price, 'quantity': quantity})
 
+    for key in menu.keys():
+        print(f"{i}: {key}")
+        # Store the menu category associated with its menu item number
+        menu_items[i] = key
+        # Add 1 to the menu item number
+        i += 1
+        
