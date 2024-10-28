@@ -1,6 +1,6 @@
 # python-challenge-1
 ## Menu
-menu_selection = {
+menu = {
     "Snacks": {
         "Cookie": .99,
         "Banana": .69,
@@ -62,18 +62,130 @@ def add_to_order(menu, category, item, sub_item=None, quantity=1):
         price = menu[category][item]
         order_list.append({'item_name': item, 'item_price': price, 'quantity': quantity})
 
-    for key in menu.keys():
+
+for key in menu.keys():
         print(f"{i}: {key}")
         # Store the menu category associated with its menu item number
         menu_items[i] = key
         # Add 1 to the menu item number
         i += 1
 
-        menu_category = input("Enter the menu category: ")
+menu_category = input("Enter the menu category: ")
 
 
 
 if menu_category.isdigit():
     print("menu_category is a digit.")
 else:
-    print("menu_category is not a digit.")
+    print("error menu_category is not a digit.")
+
+
+def order_system(menu):
+    while True:
+        item_category = input("Enter the menu category (e.g., Snacks, Meals, Drinks, Dessert) or type 'exit' to finish: ")
+        if item_category.lower() == 'exit':
+            break
+
+if item_category not in menu:
+            print("Invalid menu category. Please choose a valid option.")
+            continue
+
+ item_name = input(f"Enter the item name from the {item_category} menu: ")
+
+if item_name not in menu[item_category]:
+            print("Invalid item name. Please choose a valid option.")
+            continue
+
+selected_item_name = item_name
+
+ quantity = input(f"Enter the quantity of {selected_item_name} (default is 1 if invalid): ")
+
+
+if not quantity.isdigit():
+            quantity = 1
+        else:
+            quantity = int(quantity)
+
+
+add_to_order(menu, item_category, selected_item_name, quantity=quantity)
+print(f"{quantity}x {selected_item_name} added to your order.")
+
+# Example usage
+order_system(menu_items)
+
+# Print the final order for receipt
+print("\nFinal order:")
+for item in order_list:
+print(item)
+
+def add_to_order(menu, category, item, sub_item=None, quantity=1):
+    if sub_item:
+        price = menu[category][item][sub_item]
+        order_list.append({'Item name': f"{sub_item} {item}", 'Price': price, 'Quantity': quantity})
+    else:
+        price = menu[category][item]
+        order_list.append({'Item name': item, 'Price': price, 'Quantity': quantity})
+
+def order_system(menu):
+    place_order = True
+    while place_order:
+        item_category = input("Enter the menu category (e.g., Snacks, Meals, Drinks, Dessert) or type 'exit' to finish: ")
+        if item_category.lower() == 'exit':
+            break
+
+if item_category not in menu:
+            print("Invalid menu category. Please choose a valid option.")
+            continue
+
+ item_name = input(f"Enter the item name from the {item_category} menu: ")
+
+if item_name not in menu[item_category]:
+            print("Invalid item name. Please choose a valid option.")
+            continue
+
+selected_item_name = item_name
+
+ quantity = input(f"Enter the quantity of {selected_item_name} (default is 1 if invalid): ")
+        if not quantity.isdigit():
+            quantity = 1
+        else:
+            quantity = int(quantity)
+
+add_to_order(menu, item_category, selected_item_name, quantity=quantity)
+        print(f"{quantity}x {selected_item_name} added to your order.")
+
+       
+keep_ordering = input("Would you like to keep ordering? (y/n): ").lower()
+            match keep_ordering:
+                case 'y':
+                    place_order = True
+                    break
+                case 'n':
+                    place_order = False
+                    print("Thank you for your order")
+                    break
+                case _:
+                    print("Invalid input. Please type 'y' or 'n'.")
+
+def print_receipt(order_list):
+    print("\nOrder Receipt")
+    print("--------------------------|--------|----------")
+    print("Item name                 | Price  | Quantity")
+    print("--------------------------|--------|----------")
+    
+item_name = item['Item name']
+price = item['Price']
+quantity = item['Quantity']
+        
+
+spaces = ' ' * (26 - len(item_name))
+print(f"{item_name}{spaces}| ${price:.2f} | {quantity}")
+    
+print("--------------------------|--------|----------")
+
+# Example usage
+order_system(menu_items)
+print_receipt(order_list)
+
+Created with the assistance of Copilot   
+    
