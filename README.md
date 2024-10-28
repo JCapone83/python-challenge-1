@@ -1,6 +1,6 @@
 # python-challenge-1
 ## Menu
-menu = {
+menu_selection = {
     "Snacks": {
         "Cookie": .99,
         "Banana": .69,
@@ -68,4 +68,12 @@ def add_to_order(menu, category, item, sub_item=None, quantity=1):
         menu_items[i] = key
         # Add 1 to the menu item number
         i += 1
-        
+
+        menu_category = input("Enter the menu category: ")
+
+
+
+if menu_category.isdigit():
+    print("menu_category is a digit.")
+else:
+    print("menu_category is not a digit.")
