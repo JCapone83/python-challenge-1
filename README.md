@@ -52,3 +52,13 @@ menu = {
 }
 
 ## Order list to store customer's selections
+
+order_list = []
+def add_to_order(menu, category, item, sub_item=None, quantity=1):
+    if sub_item:
+        price = menu[category][item][sub_item]
+        order_list.append({'item_name': f"{sub_item} {item}", 'item_price': price, 'quantity': quantity})
+    else:
+        price = menu[category][item]
+        order_list.append({'item_name': item, 'item_price': price, 'quantity': quantity})
+
