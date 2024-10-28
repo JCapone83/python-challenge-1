@@ -187,5 +187,5 @@ print("--------------------------|--------|----------")
 order_system(menu_items)
 print_receipt(order_list)
 
-Created with the assistance of Copilot   
+Developed with the assistance of Copilot   
     
