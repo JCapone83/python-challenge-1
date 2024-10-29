@@ -183,7 +183,6 @@ print(f"{item_name}{spaces}| ${price:.2f} | {quantity}")
     
 print("--------------------------|--------|----------")
 
-# Example usage
 order_system(menu_items)
 print_receipt(order_list)
 
